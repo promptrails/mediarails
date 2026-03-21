@@ -1,6 +1,6 @@
 # MediaRails
 
-Unified AI media generation for Go. Speech, image, and video — one interface, 8 providers.
+Unified AI media generation for Go. Speech, image, and video — one interface, 10 providers.
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/promptrails/mediarails.svg)](https://pkg.go.dev/github.com/promptrails/mediarails)
 [![CI](https://github.com/promptrails/mediarails/actions/workflows/ci.yml/badge.svg)](https://github.com/promptrails/mediarails/actions/workflows/ci.yml)
@@ -29,6 +29,7 @@ go get github.com/promptrails/mediarails
 
 | Provider | Package | Operations | Sync/Async |
 |----------|---------|-----------|------------|
+| OpenAI | `speech/openai` | TTS, STT (Whisper) | Sync |
 | ElevenLabs | `speech/elevenlabs` | TTS | Sync |
 | Deepgram | `speech/deepgram` | TTS, STT | Sync |
 
@@ -36,6 +37,7 @@ go get github.com/promptrails/mediarails
 
 | Provider | Package | Operations | Sync/Async |
 |----------|---------|-----------|------------|
+| OpenAI DALL-E | `image/openai` | Image gen | Sync |
 | Stability AI | `image/stability` | Image gen | Sync |
 | Fal AI | `image/fal` | Image gen, Video gen | Hybrid |
 | Replicate | `image/replicate` | Image gen, Video gen | Async |

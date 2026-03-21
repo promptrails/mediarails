@@ -13,6 +13,20 @@ type Provider interface {
 
 ## Speech
 
+### OpenAI (TTS + Whisper STT)
+
+```go
+import "github.com/promptrails/mediarails/speech/openai"
+
+p := openai.New("api-key")
+```
+
+**Operations**: TTS + STT (sync)
+**TTS Config**: `voice` (default "alloy", options: alloy, echo, fable, onyx, nova, shimmer)
+**TTS Models**: `tts-1`, `tts-1-hd`
+**STT Models**: `whisper-1`
+**STT Input**: `InputData` (raw audio bytes)
+
 ### ElevenLabs
 
 ```go
@@ -41,6 +55,21 @@ p := deepgram.New("api-key")
 **Metering**: characters (TTS), seconds (STT)
 
 ## Image
+
+### OpenAI DALL-E
+
+```go
+import "github.com/promptrails/mediarails/image/openai"
+
+p := openai.New("api-key")
+```
+
+**Operations**: Image gen (sync)
+**Models**: `dall-e-3` (default), `dall-e-2`
+**Config**: `size` (default "1024x1024"), `quality` ("standard" or "hd"), `style` ("vivid" or "natural")
+**Output**: decoded PNG bytes
+**Metering**: 1 image per request
+**Metadata**: includes `revised_prompt` (DALL-E 3's rewritten prompt)
 
 ### Stability AI
 
