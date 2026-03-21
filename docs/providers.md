@@ -85,15 +85,39 @@ p := stability.New("api-key")
 
 ### Fal AI
 
+Fal supports both image and video generation. Despite being in the `image/` package, it fully handles video and image-to-video.
+
 ```go
 import "github.com/promptrails/mediarails/image/fal"
 
 p := fal.New("api-key")
+
+// Image generation
+resp, _ := p.Generate(ctx, &mediarails.GenerateRequest{
+    Type:   mediarails.ImageGen,
+    Model:  "fal-ai/flux/schnell",
+    Prompt: "a cat in space",
+})
+
+// Video generation
+resp, _ = p.Generate(ctx, &mediarails.GenerateRequest{
+    Type:   mediarails.VideoGen,
+    Model:  "fal-ai/minimax-video",
+    Prompt: "ocean waves at sunset",
+})
+
+// Image-to-video
+resp, _ = p.Generate(ctx, &mediarails.GenerateRequest{
+    Type:     mediarails.VideoFromImage,
+    Model:    "fal-ai/minimax-video",
+    Prompt:   "animate this scene",
+    InputURL: "https://example.com/photo.jpg",
+})
 ```
 
-**Operations**: Image gen, Video gen, Image-to-video (hybrid async)
-**Model**: passed as URL path (e.g., `fal-ai/flux/schnell`)
-**Output**: `AssetURL` when completed, `JobID` when async
+**Operations**: ImageGen, VideoGen, VideoFromImage (hybrid async)
+**Model**: passed as URL path (e.g., `fal-ai/flux/schnell`, `fal-ai/minimax-video`)
+**Output**: `AssetURL` when completed, `JobID` when async (poll via `CheckStatus`)
 **Metering**: 1 per request
 
 ### Replicate
