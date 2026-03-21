@@ -1,3 +1,5 @@
 - [Getting Started](getting-started.md)
 - [Providers](providers.md)
 - [Async Jobs](async.md)
+- [Error Handling](error-handling.md)
+- [Cost Tracking](cost-tracking.md)
