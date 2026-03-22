@@ -6,6 +6,43 @@
 go get github.com/promptrails/mediarails
 ```
 
+## Quick Start (Registry)
+
+The easiest way to create any media provider:
+
+```go
+import (
+    "github.com/promptrails/mediarails"
+    "github.com/promptrails/mediarails/media"
+)
+
+// Create a provider using the registry
+provider, err := media.New(media.ElevenLabs, "your-api-key")
+if err != nil {
+    log.Fatal(err)
+}
+
+// Generate speech
+resp, err := provider.Generate(ctx, &mediarails.GenerateRequest{
+    Type:   mediarails.TTS,
+    Model:  "eleven_multilingual_v2",
+    Prompt: "Hello, welcome to MediaRails!",
+    Config: map[string]any{"voice_id": "21m00Tcm4TlvDq8ikWAM"},
+})
+```
+
+Available constants:
+
+| Category | Constants |
+|----------|-----------|
+| Speech | `media.ElevenLabs`, `media.Deepgram`, `media.OpenAIAudio` |
+| Image | `media.Fal`, `media.Replicate`, `media.Stability`, `media.OpenAIImage` |
+| Video | `media.Runway`, `media.Pika`, `media.Luma` |
+
+## Direct Provider Import
+
+For provider-specific options, import the provider directly:
+
 ## Text-to-Speech (ElevenLabs)
 
 ```go

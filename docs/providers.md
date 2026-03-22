@@ -11,6 +11,22 @@ type Provider interface {
 }
 ```
 
+## Using the Registry
+
+The simplest way to create any provider:
+
+```go
+import "github.com/promptrails/mediarails/media"
+
+provider, err := media.New(media.ElevenLabs, "api-key")
+// or panic on error:
+provider := media.MustNew(media.Runway, "api-key")
+```
+
+Available constants: `media.ElevenLabs`, `media.Deepgram`, `media.OpenAIAudio`, `media.Fal`, `media.Replicate`, `media.Stability`, `media.OpenAIImage`, `media.Runway`, `media.Pika`, `media.Luma`
+
+For provider-specific options (custom base URL, HTTP client), use the direct imports below.
+
 ## Speech
 
 ### OpenAI (TTS + Whisper STT)
