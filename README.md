@@ -79,4 +79,4 @@ Full docs: [promptrails.github.io/mediarails](https://promptrails.github.io/medi
 
 ## License
 
-MIT — [PromptRails](https://promptrails.com)
+MIT — [PromptRails](https://promptrails.ai)
