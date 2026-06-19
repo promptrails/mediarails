@@ -66,3 +66,10 @@ func TestExtractURL(t *testing.T) {
 		t.Error("nil")
 	}
 }
+
+func TestProvider_SupportedTypes(t *testing.T) {
+	types := New("key").SupportedTypes()
+	if len(types) != 2 || types[0] != mediarails.ImageGen || types[1] != mediarails.VideoGen {
+		t.Errorf("SupportedTypes() = %v, want [image_gen video_gen]", types)
+	}
+}

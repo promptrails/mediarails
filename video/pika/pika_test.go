@@ -45,3 +45,10 @@ func TestProvider_ID(t *testing.T) {
 		t.Error("wrong")
 	}
 }
+
+func TestProvider_SupportedTypes(t *testing.T) {
+	types := New("key").SupportedTypes()
+	if len(types) != 1 || types[0] != mediarails.VideoGen {
+		t.Errorf("SupportedTypes() = %v, want [video_gen]", types)
+	}
+}
